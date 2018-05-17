@@ -109,13 +109,31 @@ void Stage::spawner()
 
 void Stage::getTurn()
 {
-	
+
+	cout << endl;
+	cout << "=====================================================================" << endl;
+	cout << endl;
+	cout << "Turn: " << turn << endl;
+	turn++;
 }
 
 void Stage::single(int value)
 {
-	
+	while (true)
+	{
+		int row = this->randPositionX();
+		int col = this->randPositionY();
+
+		if (stageinf[row][col] == 0)
+		{
+			monsters[value].respawn(row, col);
+			this->setspawnData(row, col, monsters[value].getHP());
+			break;
+		}
+	}
 }
+
+
 
 
 
@@ -123,6 +141,35 @@ void Stage::single(int value)
 void Stage::nexTurn()
 {
 	
+	
+	
+	clock_t startt, endt;
+
+	float difft;
+
+	startt = clock();
+
+	while (true)
+	{
+		endt = clock();
+		difft = ((float)endt - (float)startt) / CLOCKS_PER_SEC;
+		if (difft > 3.0)
+		{
+
+			startt = clock();
+			this->getTurn();
+			for (int i = 0; i < x_num; i++)
+			{
+				monsters[i].reduceHP();
+				this->setspawnData(monsters[i].getx(), monsters[i].gety(), monsters[i].getHP());
+				if (monsters[i].getHP() == 0)
+				{
+					this->single(i);
+				}
+			}
+			this->drawmap();
+		}
+	}
 }
 
 

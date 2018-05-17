@@ -15,4 +15,5 @@ int main()
 	World->spawner();
 	World->drawmap();
 	World->nexTurn();
+	system("pause");
 }

@@ -14,6 +14,6 @@ int main()
 	World->initStage();
 	World->spawner();
 	World->drawmap();
-	World->nexTurn();
-	system("pause");
+	World->autoNextTurn();
+	
 }

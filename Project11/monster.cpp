@@ -14,12 +14,12 @@ void Monster::respawn(int x, int y)
 {
 	x_cor = x;
 	y_cor = y;
-	monhp = rand() % 30 + 2;
+	monhp = rand() % 10 + 5;
 }
 
 void Monster::setHP()
 {
-	monhp = rand() % 30 + 2;
+	monhp = rand() % 10 + 5;
 }
 
 int Monster::getHP()

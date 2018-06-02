@@ -1,19 +1,25 @@
-#include "stage.h"
-#define _CRTDBG_MAP_ALLOC
-#include <stdlib.h>
-#include <crtdbg.h>
-int main()
-{
+#include "stage.hpp"
+
+int main() {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
 	int r, c, p;
-	srand(time(NULL));
-	cout << "input row"; cin >> r;
-	cout << "input collumn"; cin >> c;
-	cout << "input percent monster u want to spawn in map "; cin >> p;
-	Stage* World = new Stage(r, c, p);
-	World->initStage();
-	World->spawner();
-	World->drawmap();
-	World->autoNextTurn();
-	
+	srand((unsigned int)time(NULL));
+	std::cout << "Pls input number of row: ";
+	std::cin >> r;
+	std::cout << "Pls input number of collumn: ";
+	std::cin >> c;
+	std::cout << "Pls input number of monsters you want to spawn on map: ";
+	std::cin >> p;
+
+	REQUIRE(r * c >= p);
+
+	auto world = std::make_shared<Stage>(r, c, p);
+
+	world->stageinf();
+	world->spawner();
+	world->playerController();
+	system("pause");
+
+	return 0;
 }

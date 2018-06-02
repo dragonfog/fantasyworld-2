@@ -1,5 +1,4 @@
-#include "player.h"
-
+#include "Player.hpp"
 
 
 Player::Player()
@@ -66,7 +65,7 @@ int Player::getPosY()
 
 void Player::setHP()
 {
-	p_hp = rand() % START_HP + HP_RANGE;
+	p_hp = 50;
 }
 
 int Player::getHP()
@@ -86,5 +85,20 @@ bool Player::getFlag()
 
 void Player::setFlag()
 {
-	is_death = !is_death;
+	is_death = false;
+}
+
+int Player::getType()
+{
+	return TYPE;
+}
+
+void Player::attacked(const int& dmg)
+{
+	p_hp -= dmg;
+	if (p_hp <= ABSOLUTE_ZERO)
+	{
+		is_death = !is_death;
+		p_hp = ABSOLUTE_ZERO;
+	}
 }

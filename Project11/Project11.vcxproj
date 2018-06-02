@@ -118,9 +118,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h" />
+    <ClInclude Include="Header.hpp" />
     <ClInclude Include="monster.h" />
+    <ClInclude Include="monster.hpp" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="player.hpp" />
     <ClInclude Include="stage.h" />
+    <ClInclude Include="stage.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
